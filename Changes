@@ -1,0 +1,6 @@
+Revision history for Perl extension DwC::Plugin::Basics.
+
+0.01  Thu Apr 19 07:52:56 2018
+	- original version; created by h2xs 1.23 with options
+		-AX DwC::Plugin::Basics
+

@@ -1,0 +1,6 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/dwc-basics.t
+lib/DwC/Plugin/Basics.pm
