@@ -18,7 +18,7 @@ my $dwc = DwC->new({
   kingdom => "Plantae"
 });
 
-DwC::Plugin::Sanity->validate($dwc);
+DwC::Plugin::Basics->validate($dwc);
 
 ok($$dwc{warning}[0][0] eq "Depth problem");
 ok($$dwc{warning}[1][0] eq "Elevation problem");
@@ -31,6 +31,6 @@ is($$dwc{warning}[5], undef);
 
 $dwc->reset();
 $$dwc{kingdom} = "納豆";
-DwC::Plugin::Sanity->validate($dwc);
+DwC::Plugin::Basics->validate($dwc);
 ok($$dwc{warning}[5][0], "Unknown kingdom");
 

@@ -4,7 +4,7 @@ use utf8;
 
 use 5.14.0;
 
-package DwC::Plugin::Sanity;
+package DwC::Plugin::Basics;
 
 use POSIX 'strftime';
 
@@ -29,20 +29,6 @@ sub flipped {
     return 1 if($min > $max);
   }
   return 0;
-}
-
-sub clean {
-  my ($plugin, $dwc) = @_;
-  return if($ENV{DWC_HANDSOFF});
-
-  if ($$dwc{eventDate} && $$dwc{eventDate} eq "0000-00-00") {
-    $dwc->log("info", "Removed invalid eventDate", "core");
-    $$dwc{eventDate} = "";
-  }
-  if ($$dwc{dateIdentified} && $$dwc{dateIdentified} eq "0000-00-00") {
-    $dwc->log("info", "Removed invalid dateIdentified", "core");
-    $$dwc{dateIdentified} = "";
-  }
 }
 
 sub validate {
@@ -79,7 +65,6 @@ sub validate {
   if($$dwc{day} && ($$dwc{day} < 1 || $$dwc{day} > 31)) {
     $dwc->log("warning", "Day out of bounds $$dwc{day}", "date");
   }
-
 
   # check kingdom (ALA: UNKNOWN_KINGDOM)
   if($$dwc{kingdom} && !grep(/^$$dwc{kingdom}$/, @kingdoms)) {
